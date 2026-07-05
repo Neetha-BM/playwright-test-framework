@@ -38,7 +38,8 @@ def authenticated_page(page):
 def attach_screenshot_on_failure(request, page):
     """Capture a screenshot and attach to Allure report on test failure."""
     yield
-    if request.node.rep_call and request.node.rep_call.failed:
+    rep_call = getattr(request.node, "rep_call", None)
+    if rep_call and rep_call.failed:
         allure.attach(
             page.screenshot(),
             name="failure-screenshot",
