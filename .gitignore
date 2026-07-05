@@ -1,12 +1,20 @@
+# Python
 __pycache__/
 *.pyc
 .pytest_cache/
 allure-results/
 allure-report/
 reports/
-.env
 venv/
 .venv/
 *.egg-info/
+
+# Node / TypeScript
+node_modules/
+playwright-report/
+test-results/
 dist/
 build/
+
+# Shared
+.env
