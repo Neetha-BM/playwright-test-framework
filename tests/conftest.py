@@ -4,6 +4,18 @@ from pages import LoginPage, InventoryPage, CartPage, CheckoutPage
 from utils.config import VALID_USER, PASSWORD, BASE_URL
 
 
+@pytest.fixture(scope="session")
+def browser_type_launch_args(browser_type_launch_args):
+    # Maximize the browser window on launch for better visibility
+    return {**browser_type_launch_args, "args": ["--start-maximized"]}
+
+
+@pytest.fixture(scope="session")
+def browser_context_args(browser_context_args):
+    # Disable fixed viewport so the window fills the maximized screen
+    return {**browser_context_args, "no_viewport": True}
+
+
 @pytest.fixture
 def login_page(page):
     return LoginPage(page)
