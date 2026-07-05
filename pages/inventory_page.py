@@ -24,16 +24,19 @@ class InventoryPage(BasePage):
     def add_item_to_cart_by_index(self, index: int):
         items = self.get_inventory_items()
         items[index].locator("button").click()
+        self.pause()
         return self
 
     def add_item_to_cart_by_name(self, name: str):
         item_id = name.lower().replace(" ", "-")
         self.page.click(f"[data-test='add-to-cart-{item_id}']")
+        self.pause()
         return self
 
     def remove_item_from_cart_by_name(self, name: str):
         item_id = name.lower().replace(" ", "-")
         self.page.click(f"[data-test='remove-{item_id}']")
+        self.pause()
         return self
 
     def get_cart_badge_count(self) -> int:
@@ -43,6 +46,7 @@ class InventoryPage(BasePage):
 
     def go_to_cart(self):
         self.page.click(self.SHOPPING_CART_LINK)
+        self.pause()
         return self
 
     def sort_by(self, value: str):

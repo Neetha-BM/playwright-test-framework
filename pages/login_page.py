@@ -20,6 +20,7 @@ class LoginPage(BasePage):
         self.page.fill(self.USERNAME_INPUT, username)
         self.page.fill(self.PASSWORD_INPUT, password)
         self.page.click(self.LOGIN_BUTTON)
+        self.pause()
         return self
 
     def get_error_message(self) -> str:

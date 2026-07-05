@@ -24,12 +24,15 @@ class CartPage(BasePage):
     def remove_item_by_name(self, name: str):
         item_id = name.lower().replace(" ", "-")
         self.page.click(f"[data-test='remove-{item_id}']")
+        self.pause()
         return self
 
     def continue_shopping(self):
         self.page.click(self.CONTINUE_SHOPPING_BUTTON)
+        self.pause()
         return self
 
     def proceed_to_checkout(self):
         self.page.click(self.CHECKOUT_BUTTON)
+        self.pause()
         return self

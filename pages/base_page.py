@@ -1,12 +1,20 @@
 from playwright.sync_api import Page, expect
 
+# Pause duration in ms — gives the viewer time to see each step when running headed
+DEMO_PAUSE_MS = 1000
+
 
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
+    def pause(self):
+        # Brief wait so the page is visible before the next action
+        self.page.wait_for_timeout(DEMO_PAUSE_MS)
+
     def navigate(self, path: str = ""):
         self.page.goto(path)
+        self.pause()
 
     def get_title(self) -> str:
         return self.page.title()

@@ -21,14 +21,17 @@ class CheckoutPage(BasePage):
         self.page.fill(self.FIRST_NAME_INPUT, first_name)
         self.page.fill(self.LAST_NAME_INPUT, last_name)
         self.page.fill(self.POSTAL_CODE_INPUT, postal_code)
+        self.pause()
         return self
 
     def click_continue(self):
         self.page.click(self.CONTINUE_BUTTON)
+        self.pause()
         return self
 
     def click_finish(self):
         self.page.click(self.FINISH_BUTTON)
+        self.pause()
         return self
 
     def click_cancel(self):
